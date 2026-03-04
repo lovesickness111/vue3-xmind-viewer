@@ -14,6 +14,7 @@
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
 import MindElixir from 'mind-elixir';
 import 'mind-elixir/style.css';
+// @ts-ignore – no type declarations available
 import exportXmind from '@mind-elixir/export-xmind';
 // @ts-ignore
 import xmindParse from 'simple-mind-map/src/parse/xmind.js';
@@ -118,7 +119,7 @@ const loadFile = async (file: File) => {
     // 5. Initialise Mind Elixir with the detected direction
     mindInstance = new MindElixir({
       el: containerRef.value,
-      direction,
+      direction: direction as 0 | 1 | 2,
       draggable: true,
       editable: true,
       contextMenu: true,
