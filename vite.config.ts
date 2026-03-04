@@ -19,5 +19,13 @@ export default defineConfig({
       stream: 'stream-browserify',
       vm: 'vm-browserify'
     }
-  }
+  },
+  optimizeDeps: {
+    include: ['file-saver'],
+  },
+  build: {
+    commonjsOptions: {
+      include: [/file-saver/, /node_modules/],
+    },
+  },
 })
