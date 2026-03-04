@@ -12,13 +12,24 @@
         <div class="tabs">
           <button
             class="tab"
-            :class="{ active: selectedViewer === 'simple' }"
-            @click="selectedViewer = 'simple'"
+            :class="{ active: selectedViewer === 'elixir' }"
+            @click="selectedViewer = 'elixir'"
           >
             <span class="tab-num">①</span>
             <span class="tab-info">
+              <strong>mind-elixir</strong>
+              <small>Modern editor · Edit · Direction-aware import/export</small>
+            </span>
+          </button>
+          <button
+            class="tab"
+            :class="{ active: selectedViewer === 'simple' }"
+            @click="selectedViewer = 'simple'"
+          >
+            <span class="tab-num">②</span>
+            <span class="tab-info">
               <strong>simple-mind-map</strong>
-              <small>Canvas · Interactive · Export</small>
+              <small>Canvas · Edit · Export PNG</small>
             </span>
           </button>
           <button
@@ -26,7 +37,7 @@
             :class="{ active: selectedViewer === 'embed' }"
             @click="selectedViewer = 'embed'"
           >
-            <span class="tab-num">②</span>
+            <span class="tab-num">③</span>
             <span class="tab-info">
               <strong>xmind-embed-viewer</strong>
               <small>Official by XMind Ltd · Requires internet</small>
@@ -72,7 +83,7 @@ const isDragging = ref(false);
 const isModalVisible = ref(false);
 const selectedFile = ref<File | null>(null);
 const fileInput = ref<HTMLInputElement | null>(null);
-const selectedViewer = ref<'simple' | 'embed'>('simple');
+const selectedViewer = ref<'simple' | 'elixir' | 'embed'>('elixir');
 
 const triggerFileInput = () => {
   fileInput.value?.click();

@@ -18,11 +18,24 @@
                 @click="downloadXMind"
                 :disabled="!file"
               >⬇️ XMind</button>
+              <button
+                v-if="viewerType === 'elixir'"
+                class="btn secondary"
+                @click="elixirExportSVG"
+                :disabled="!file"
+              >⬇️ SVG</button>
+              <button
+                v-if="viewerType === 'elixir'"
+                class="btn secondary"
+                @click="elixirExportXMind"
+                :disabled="!file"
+              >⬇️ XMind</button>
               <button class="close-btn" @click="close">&times;</button>
             </div>
           </header>
           <div class="modal-body">
             <XMindViewer v-if="file && viewerType === 'simple'" :file="file" ref="viewerRef" />
+            <MindElixirViewer v-else-if="file && viewerType === 'elixir'" :file="file" ref="elixirRef" />
             <EmbedViewer v-else-if="file && viewerType === 'embed'" :file="file" />
             <div v-else class="empty-state">No file selected</div>
           </div>
@@ -35,14 +48,16 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import XMindViewer from './XMindViewer.vue';
+import MindElixirViewer from './MindElixirViewer.vue';
 import EmbedViewer from './EmbedViewer.vue';
 
 const viewerRef = ref<InstanceType<typeof XMindViewer> | null>(null);
+const elixirRef = ref<InstanceType<typeof MindElixirViewer> | null>(null);
 
 defineProps<{
   visible: boolean;
   file: File | null;
-  viewerType: 'simple' | 'embed';
+  viewerType: 'simple' | 'elixir' | 'embed';
 }>();
 
 const emit = defineEmits<{
@@ -59,6 +74,14 @@ const downloadPNG = () => {
 
 const downloadXMind = () => {
   viewerRef.value?.exportXMind();
+};
+
+const elixirExportSVG = () => {
+  elixirRef.value?.exportToPNG();
+};
+
+const elixirExportXMind = () => {
+  elixirRef.value?.exportToXmind();
 };
 </script>
 

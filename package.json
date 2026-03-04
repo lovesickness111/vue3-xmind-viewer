@@ -11,6 +11,8 @@
   "dependencies": {
     "@antv/g6": "^4.8.25",
     "@hyjiacan/xmind-viewer": "^2.0.2",
+    "@mind-elixir/export-xmind": "^2.0.1",
+    "mind-elixir": "^5.9.2",
     "simple-mind-map": "^0.14.0-fix.1",
     "stream-browserify": "^3.0.0",
     "vm-browserify": "^1.1.2",
