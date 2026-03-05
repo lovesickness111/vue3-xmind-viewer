@@ -2,6 +2,10 @@
 
 Ứng dụng Vue 3 cho phép **xem, chỉnh sửa và re-export file `.xmind`** trực tiếp trên trình duyệt — không cần cài phần mềm. Tích hợp 3 thư viện viewer để so sánh.
 
+# Link sử dụng Online
+
+https://vue3-xmind-viewer.vercel.app/
+
 ## 🚀 Cài đặt & Chạy
 
 ```bash
